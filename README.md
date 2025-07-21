@@ -9,7 +9,7 @@ Welcome to **Sheger Listings**, a website for buying and renting houses, cars, a
 - Contact form to reach sellers.
 
 ## How to Use
-1. Visit the site at [yourusername.github.io/sheger-listings](https://yourusername.github.io/sheger-listings).
+1. Visit the site at [Neba67.github.io/sheger-listings](https://Neba67.github.io/sheger-listings).
 2. Search for listings or contact sellers directly.
 3. New listings are added regularly.
 
