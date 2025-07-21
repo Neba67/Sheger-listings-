@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sheger Listings - ሸገር ዝርዝሮች</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: Arial, 'Noto Sans Ethiopic', sans-serif; }
+    .listing-card { transition: transform 0.2s; }
+    .listing-card:hover { transform: scale(1.05); }
+    [data-lang="am"] .en { display: none; }
+    [data-lang="en"] .am { display: none; }
+  </style>
+</head>
+<body class="bg-gray-100" data-lang="en">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">
+        <span class="en">Sheger Listings</span>
+        <span class="am">ሸገር ዝርዝሮች</span>
+      </h1>
+      <nav class="flex items-center">
+        <a href="#home" class="px-2"><span class="en">Home</span><span class="am">ቤት</span></a>
+        <a href="#listings" class="px-2"><span class="en">Listings</span><span class="am">ዝርዝሮች</span></a>
+        <a href="#contact" class="px-2"><span class="en">Contact</span><span class="am">እውቂያ</span></a>
+        <button onclick="toggleLanguage()" class="ml-4 bg-white text-blue-600 px-2 py-1 rounded">
+          <span class="en">አማርኛ</span><span class="am">English</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="py-10 bg-white text-center">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold mb-4">
+        <span class="en">Find Houses, Cars, and Goods in Addis Ababa</span>
+        <span class="am">በአዲስ አበባ ቤቶች፣ መኪኖች እና እቃዎች ያግኙ</span>
+      </h2>
+      <p class="text-lg mb-6">
+        <span class="en">Your one-stop platform for buying or renting in Ethiopia.</span>
+        <span class="am">ለመግዛት ወይም ለመከራየት በኢትዮጵያ ውስጥ አንድ-ማቆሚያ መድረክዎ።</span>
+      </p>
+      <input type="text" id="search" 
+             placeholder="Search for houses, cars, or goods..." 
+             data-placeholder-am="ቤቶች፣ መኪኖች ወይም እቃዎች ፈልግ..." 
+             class="p-2 w-3/4 max-w-md border rounded">
+      <button onclick="searchListings()" class="bg-blue-600 text-white p-2 rounded ml-2">
+        <span class="en">Search</span><span class="am">ፈልግ</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Listings Section -->
+  <section id="listings" class="py-10">
+    <div class="container mx-auto">
+      <h2 class="text-2xl font-bold mb-6 text-center">
+        <span class="en">Available Listings</span><span class="am">የተገኙ ዝርዝሮች</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="listing-container">
+        <!-- Sample House Listing -->
+        <div class="listing-card bg-white p-4 rounded shadow">
+          <img src="https://via.placeholder.com/300x200" alt="House" class="w-full h-40 object-cover rounded">
+          <h3 class="text-xl font-semibold mt-2">
+            <span class="en">2-Bedroom House in Bole</span>
+            <span class="am">ቦሌ ውስጥ 2 መኝታ ቤት</span>
+          </h3>
+          <p class="text-gray-600">
+            <span class="en">Price: 10,000 ETB/month (Rent)</span>
+            <span class="am">ዋጋ: 10,000 ብር/በወር (ኪራይ)</span>
+          </p>
+          <p class="text-gray-600">
+            <span class="en">Location: Bole, Addis Ababa</span>
+            <span class="am">ቦታ: ቦሌ፣ አዲስ አበባ</span>
+          </p>
+          <button onclick="contactSeller('2-Bedroom House in Bole / ቦሌ ውስጥ 2 መኝታ ቤት')" 
+                  class="bg-blue-600 text-white p-2 rounded mt-2 w-full">
+            <span class="en">Contact Seller</span><span class="am">ሻጭ ያነጋግሩ</span>
+          </button>
+        </div>
+        <!-- Sample Car Listing -->
+        <div class="listing-card bg-white p-4 rounded shadow">
+          <img src="https://via.placeholder.com/300x200" alt="Car" class="w-full h-40 object-cover rounded">
+          <h3 class="text-xl font-semibold mt-2">
+            <span class="en">Toyota Corolla 2018</span>
+            <span class="am">ቶዮታ ኮሮላ 2018</span>
+          </h3>
+          <p class="text-gray-600">
+            <span class="en">Price: 1,200,000 ETB (Sale)</span>
+            <span class="am">ዋጋ: 1,200,000 ብር (ሽያጭ)</span>
+          </p>
+          <p class="text-gray-600">
+            <span class="en">Location: Kazanchis, Addis Ababa</span>
+            <span class="am">ቦታ: ካዛንቺስ፣ አዲስ አበባ</span>
+          </p>
+          <button onclick="contactSeller('Toyota Corolla 2018 / ቶዮታ ኮሮላ 2018')" 
+                  class="bg-blue-600 text-white p-2 rounded mt-2 w-full">
+            <span class="en">Contact Seller</span><span class="am">ሻጭ ያነጋግሩ</span>
+          </button>
+        </div>
+        <!-- Sample Goods Listing -->
+        <div class="listing-card bg-white p-4 rounded shadow">
+          <img src="https://via.placeholder.com/300x200" alt="Goods" class="w-full h-40 object-cover rounded">
+          <h3 class="text-xl font-semibold mt-2">
+            <span class="en">Used Laptop Dell XPS</span>
+            <span class="am">ያገለገለ ላፕቶፕ ዴል XPS</span>
+          </h3>
+          <p class="text-gray-600">
+            <span class="en">Price: 25,000 ETB (Sale)</span>
+            <span class="am">ዋጋ: 25,000 ብር (ሽያጭ)</span>
+          </p>
+          <p class="text-gray-600">
+            <span class="en">Location: Piassa, Addis Ababa</span>
+            <span class="am">ቦታ: ፒያሳ፣ አዲስ አበባ</span>
+          </p>
+          <button onclick="contactSeller('Used Laptop Dell XPS / ያገለገለ ላፕቶፕ ዴል XPS')" 
+                  class="bg-blue-600 text-white p-2 rounded mt-2 w-full">
+            <span class="en">Contact Seller</span><span class="am">ሻጭ ያነጋግሩ</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-10 bg-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-6">
+        <span class="en">Get in Touch</span><span class="am">እውቂያ ያድርጉ</span>
+      </h2>
+      <div class="max-w-md mx-auto">
+        <input type="text" id="name" 
+               placeholder="Your Name" 
+               data-placeholder-am="የእርስዎ ስም" 
+               class="p-2 w-full border rounded mb-4">
+        <input type="email" id="email" 
+               placeholder="Your Email" 
+               data-placeholder-am="የእርስዎ ኢሜይል" 
+               class="p-2 w-full border rounded mb-4">
+        <textarea id="message" 
+                  placeholder="Your Message" 
+                  data-placeholder-am="የእርስዎ መልእክት" 
+                  class="p-2 w-full border rounded mb-4" rows="5"></textarea>
+        <button onclick="sendMessage()" class="bg-blue-600 text-white p-2 rounded w-full">
+          <span class="en">Send Message</span><span class="am">መልእክት ላክ</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white p-4 text-center">
+    <p><span class="en">© 2025 Sheger Listings. All rights reserved.</span>
+       <span class="am">© 2025 ሸገር ዝርዝሮች። ሁሉም መብቶች የተጠበቁ ናቸው።</span></p>
+  </footer>
+
+  <script>
+    function toggleLanguage() {
+      const body = document.body;
+      const currentLang = body.getAttribute('data-lang');
+      const newLang = currentLang === 'en' ? 'am' : 'en';
+      body.setAttribute('data-lang', newLang);
+      
+      // Update placeholder text
+      const inputs = ['search', 'name', 'email', 'message'];
+      inputs.forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+          input.placeholder = newLang === 'en' ? 
+            input.getAttribute('placeholder') : 
+            input.getAttribute('data-placeholder-am');
+        }
+      });
+    }
+
+    function searchListings() {
+      const searchTerm = document.getElementById('search').value.toLowerCase();
+      const listings = document.querySelectorAll('.listing-card');
+      listings.forEach(listing => {
+        const title = listing.querySelector('h3').textContent.toLowerCase();
+        listing.style.display = title.includes(searchTerm) ? 'block' : 'none';
+      });
+    }
+
+    function contactSeller(item) {
+      const message = `Interested in ${item}. Please provide more details. / ለ${item} ፍላጎት አለኝ። ተጨማሪ ዝርዝሮችን ያቅርቡ።`;
+      document.getElementById('message').value = message;
+      document.getElementById('contact').scrollIntoView();
+    }
+
+    function sendMessage() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      if (name && email && message) {
+        alert(document.body.getAttribute('data-lang') === 'en' ? 
+              'Message sent! We will get back to you soon.' : 
+              'መልእክት ተልኳል! በቅርቡ ወደ እርስዎ እንመለሳለን።');
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+      } else {
+        alert(document.body.getAttribute('data-lang') === 'en' ? 
+              'Please fill out all fields.' : 
+              'እባክዎ ሁሉንም መስኮች ይሙሉ።');
+      }
+    }
+  </script>
+</body>
+</html>
